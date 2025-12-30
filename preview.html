@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>グルメダイニング - プレビュー</title>
+  <link rel="icon" href="./favicon.ico">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    
+    .phone-container {
+      position: relative;
+      width: 375px;
+      height: 812px;
+      max-height: 90vh;
+    }
+    
+    .phone-frame {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #1c1c1e;
+      border-radius: 55px;
+      padding: 12px;
+      box-shadow: 
+        0 0 0 3px #2c2c2e,
+        0 25px 50px -12px rgba(0, 0, 0, 0.5),
+        inset 0 0 0 2px #3a3a3c;
+    }
+    
+    .phone-screen {
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      border-radius: 44px;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .status-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 47px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.9) 100%);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 28px 0;
+      z-index: 100;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    
+    .status-time {
+      color: #000;
+    }
+    
+    .status-icons {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      color: #000;
+    }
+    
+    .status-icons svg {
+      width: 18px;
+      height: 18px;
+    }
+    
+    .notch {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 126px;
+      height: 34px;
+      background: #1c1c1e;
+      border-radius: 0 0 24px 24px;
+      z-index: 101;
+    }
+    
+    .home-indicator {
+      position: absolute;
+      bottom: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 134px;
+      height: 5px;
+      background: #000;
+      border-radius: 3px;
+      z-index: 100;
+    }
+    
+    .app-iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 44px;
+    }
+    
+    .app-title {
+      text-align: center;
+      color: #fff;
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: 500;
+      opacity: 0.9;
+    }
+    
+    .app-subtitle {
+      text-align: center;
+      color: rgba(255,255,255,0.6);
+      margin-top: 8px;
+      font-size: 14px;
+    }
+    
+    @media (max-width: 420px) {
+      .phone-container {
+        width: 100%;
+        height: 100vh;
+        max-height: none;
+      }
+      
+      .phone-frame {
+        border-radius: 0;
+        padding: 0;
+        box-shadow: none;
+      }
+      
+      .phone-screen {
+        border-radius: 0;
+      }
+      
+      .app-iframe {
+        border-radius: 0;
+      }
+      
+      .notch, .home-indicator, .status-bar {
+        display: none;
+      }
+      
+      .app-title, .app-subtitle {
+        display: none;
+      }
+      
+      body {
+        padding: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <div class="phone-container">
+      <div class="phone-frame">
+        <div class="phone-screen">
+          <div class="notch"></div>
+          <div class="status-bar">
+            <span class="status-time" id="current-time">9:41</span>
+            <div class="status-icons">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 3C7.46 3 3.34 4.78.29 7.67c-.18.18-.29.43-.29.71 0 .28.11.53.29.71l2.48 2.48c.18.18.43.29.71.29.27 0 .52-.11.7-.28.79-.74 1.69-1.36 2.66-1.85.33-.16.56-.5.56-.9v-3.1c1.45-.48 3-.73 4.6-.73s3.15.25 4.6.73v3.1c0 .4.23.74.56.9.98.49 1.87 1.12 2.67 1.85.18.18.43.28.7.28.28 0 .53-.11.71-.29l2.48-2.48c.18-.18.29-.43.29-.71 0-.28-.11-.53-.29-.71C20.66 4.78 16.54 3 12 3z"/>
+              </svg>
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M2 22h20V2z"/>
+              </svg>
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/>
+              </svg>
+            </div>
+          </div>
+          <iframe src="./index.html" class="app-iframe"></iframe>
+          <div class="home-indicator"></div>
+        </div>
+      </div>
+    </div>
+    <p class="app-title">グルメダイニング</p>
+    <p class="app-subtitle">飲食店アプリ サンプル</p>
+  </div>
+  
+  <script>
+    function updateTime() {
+      const now = new Date();
+      const hours = now.getHours();
+      const minutes = now.getMinutes().toString().padStart(2, '0');
+      document.getElementById('current-time').textContent = hours + ':' + minutes;
+    }
+    updateTime();
+    setInterval(updateTime, 60000);
+  </script>
+</body>
+</html>
